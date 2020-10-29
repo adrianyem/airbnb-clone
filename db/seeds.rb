@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+users = User.create([
+  { name: "Adrian", address: "Singapore", phone_number: 123456, email: 'a@a.com', password: '123456' },
+  { name: "James", address: "Malaysia", phone_number: 654321, email: 'b@b.com', password: '987654' },
+])
+
+offer = Offer.create(name: "Two Room Flat", description: "2 room flat with a goodview", owner: users.first)
+
+Booking.create(start_time: 3.day.ago, end_time: 1.day.ago, customer: users.last, offer: offer)
