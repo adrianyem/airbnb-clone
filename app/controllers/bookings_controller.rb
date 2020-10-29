@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   def create
     @booking = current_user.bookings.new(booking_params)
     if @booking.save
-      redirect_to :dashboard_path, notice: "Your booking is successful"
+      redirect_to account_bookings_path, notice: "Your booking is successful"
     else
       render :new
     end
@@ -18,6 +18,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_time, :end_time)
+    params.require(:booking).permit(:start_time, :end_time, :offer_id)
   end
 end

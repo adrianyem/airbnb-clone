@@ -4,6 +4,7 @@
   <%= simple_form_for @booking do |f| %>
     <%= f.input :start_time, as: :datetime %>
     <%= f.input :end_time, as: :datetime %>
+    <%= f.input :offer_id, as: :hidden, input_html: { value: @offer.id } %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
