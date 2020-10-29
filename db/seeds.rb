@@ -12,6 +12,10 @@ users = User.create([
   { name: "James", address: "Malaysia", phone_number: 654321, email: 'b@b.com', password: '987654' },
 ])
 
-offer = Offer.create(name: "Two Room Flat", description: "2 room flat with a goodview", owner: users.first)
+offers = Offer.create([
+  { name: "Two Room Flat", description: "2 room flat with a goodview", owner: users.first },
+  { name: "One Room Flat", description: "1 room flat with a goodview", owner: users.first },
+  { name: "Three Room Flat", description: "3 room flat with a goodview", owner: users.last },
+])
 
-Booking.create(start_time: 3.day.ago, end_time: 1.day.ago, customer: users.last, offer: offer)
+Booking.create(start_time: 3.day.ago, end_time: 1.day.ago, customer: users.last, offer: offers.first)

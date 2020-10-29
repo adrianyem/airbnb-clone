@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container text-center mt-5">
+  <h2>Book a flat</h2>
+  <p>Check out the offers below</p>
+
+  <div class="mt-3 d-flex">
+    <% @offers.each do |offer| %>
+      <div class="offer">
+        <b><%= offer.name %></b> <br>
+        <%= offer.description %> <br>
+        Listed by <%= offer.owner.name %> <br>
+        <%= link_to "Book", new_booking_path(offer_id: offer.id), class: "btn btn-primary btn-block mt-3" %>
+      </div>
+    <% end %>
+  </div>
+</div>
