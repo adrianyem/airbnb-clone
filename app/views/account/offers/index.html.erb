@@ -14,7 +14,7 @@
 
         <% if bookings.present? %>
           <% bookings.each do |booking| %>
-            <%= booking.customer.name %> | <%= booking.start_time %> to <%= booking.end_time %>
+            <%= booking.customer.name %> | <%= booking.start_date %> to <%= booking.end_date %>
           <% end %>
         <% else %>
           <i>There are no bookings for this offer</i>

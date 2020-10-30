@@ -18,4 +18,4 @@ offers = Offer.create([
   { name: "Three Room Flat", description: "3 room flat with a goodview", owner: users.last },
 ])
 
-Booking.create(start_time: 3.day.ago, end_time: 1.day.ago, customer: users.last, offer: offers.first)
+Booking.create(start_date: 3.day.ago, end_date: 1.day.ago, customer: users.last, offer: offers.first)
