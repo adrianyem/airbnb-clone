@@ -13,9 +13,9 @@ users = User.create([
 ])
 
 offers = Offer.create([
-  { name: "Two Room Flat", description: "2 room flat with a goodview", owner: users.first },
-  { name: "One Room Flat", description: "1 room flat with a goodview", owner: users.first },
-  { name: "Three Room Flat", description: "3 room flat with a goodview", owner: users.last },
+  { name: "Two Room Flat", description: "2 room flat with a goodview", owner: users.first, price: 100 },
+  { name: "One Room Flat", description: "1 room flat with a goodview", owner: users.first, price: 150 },
+  { name: "Three Room Flat", description: "3 room flat with a goodview", owner: users.last, price: 200 },
 ])
 
-Booking.create(start_date: 3.day.ago, end_date: 1.day.ago, customer: users.last, offer: offers.first)
+Booking.create(start_date: 3.day.ago, end_date: 1.day.ago, customer: users.last, offer: offers.first, remarks: 'Need to check in at certain times')

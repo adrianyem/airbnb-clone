@@ -1,12 +1,15 @@
 <div class="container mt-3">
-  <h3>Offer for <%= @offer.name %></h3>
+  <h3><%= @offer.name %></h3>
+  <p><%= @offer.description %></p>
   <% count = @offer.bookings.count %>
   <% if count > 0 %>
     <p class="text-danger">This has been booked <%= @offer.bookings.count %> times</p>
   <% end %>
-  <%= simple_form_for @booking do |f| %>
+  <h3>Make a reservation</h3>
+  <%= simple_form_for [@offer, @booking] do |f| %>
     <%= f.input :start_date, as: :date %>
     <%= f.input :end_date, as: :date %>
+    <%= f.input :remarks %>
     <%= f.input :offer_id, as: :hidden, input_html: { value: @offer.id } %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>

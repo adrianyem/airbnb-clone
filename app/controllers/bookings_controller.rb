@@ -1,19 +1,12 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @booking = current_user.bookings.new
-    @offer = Offer.find(params[:offer_id])
-  end
-
   def create
     @booking = current_user.bookings.new(booking_params)
     if @booking.save
-      flash[:notice] = "Your booking is successful"
-      redirect_to account_bookings_path
+      redirect_to account_bookings_path, notice: "Your booking is successful"
     else
-      flash[:alert] = @booking.errors.full_messages
-      render :new
+      redirect_to offer_path(@booking.offer), alert: @booking.errors.full_messages.join("\n")
     end
   end
 

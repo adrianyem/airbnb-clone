@@ -8,7 +8,8 @@
         <b><%= offer.name %></b> <br>
         <%= offer.description %> <br>
         Listed by <%= offer.owner.name %> <br>
-        <%= link_to "Book", new_booking_path(offer_id: offer.id), class: "btn btn-primary btn-block mt-3" %>
+        Price: $<%= offer.price %>
+        <%= link_to "Book", offer_path(offer), class: "btn btn-primary btn-block mt-3" %>
       </div>
     <% end %>
   </div>

@@ -6,7 +6,12 @@ class Booking < ApplicationRecord
   validate :check_overlapping
 
   def check_overlapping
-    overlapping = Booking.where('offer_id = ? AND start_date <= ? AND end_date >= ?', offer_id, end_date, start_date).exists?
-    errors.add(:base, 'This slot is not available. Please try other dates') if overlapping
+    overlap = Booking.where('offer_id = ? AND start_date <= ? AND end_date >= ?', offer_id, end_date, start_date)
+
+    if overlap.exists?
+      period = overlap.pluck(:start_date, :end_date)
+      booked_period = period.map {|x| x.join(' => ')}.join(', ')
+      errors.add(:base, "This slot is not available. It has been booked on these dates: #{booked_period}")
+    end
   end
 end
