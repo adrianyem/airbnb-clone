@@ -3,7 +3,7 @@ module Account
     before_action :authenticate_user!
 
     def index
-
+      @offers = current_user.offers
     end
   end
 end

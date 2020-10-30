@@ -1,1 +1,14 @@
-Hello this is all your bookings
+<div class='container mt-5'>
+  <%= link_to "Switch to see your offers", account_offers_path %>
+  <h3>See all your bookings</h3>
+  <div class="mt-3 d-flex">
+    <% @bookings.each do |booking| %>
+      <div class="offer">
+        <b><%= booking.offer.name %></b> <br>
+        Period - <%= booking.start_time %> to <%= booking.end_time %>
+        <%= link_to "Edit", "#", class: 'btn btn-sm btn-primary' %>
+        <%= link_to "Withdraw", "#", class: 'btn btn-sm btn-danger' %>
+      </div>
+    <% end %>
+  </div>
+</div>

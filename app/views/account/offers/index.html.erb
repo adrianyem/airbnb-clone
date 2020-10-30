@@ -1,0 +1,25 @@
+<div class='container mt-5'>
+  <%= link_to "Switch to see your bookings", account_bookings_path %>
+  <h3>See all your offerings</h3>
+  <div class="mt-3 d-flex">
+    <% @offers.each do |offer| %>
+      <div class="offer">
+        <b><%= offer.name %></b> <br>
+        <%= offer.description %> <br>
+        <%= link_to "Edit", "#", class: 'btn btn-sm btn-primary' %>
+        <%= link_to "Delete", "#", class: 'btn btn-sm btn-danger' %>
+        <hr>
+        <p>Bookings for this offer</p>
+        <% bookings = offer.bookings %>
+
+        <% if bookings.present? %>
+          <% bookings.each do |booking| %>
+            <%= booking.customer.name %> | <%= booking.start_time %> to <%= booking.end_time %>
+          <% end %>
+        <% else %>
+          <i>There are no bookings for this offer</i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
