@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @offers = Offer.includes(:owner)
   end
+
+  def about
+
+  end
 end
